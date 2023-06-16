@@ -57,10 +57,9 @@ dog.make_sound()
 mice = Mice()
 mice.make_sound()"""
 
-
+#############################################
 import os
 from playsound import playsound
-
 
 # Get the directory path containing the current script
 script_dir = os.path.dirname(os.path.realpath(__file__))
@@ -80,6 +79,7 @@ class Animal:
     def make_sound(self):
         print(f"The animal {self.name} makes a sound.")
 
+
 class Dog(Animal):
     def __init__(self, name):
         super().__init__(name)
@@ -87,6 +87,7 @@ class Dog(Animal):
     def make_sound(self):
         playsound(mp3_file_dog)
         print(f"The dog {self.name} barks.")
+
 
 class Cat(Animal):
     def __init__(self, name):
@@ -96,11 +97,18 @@ class Cat(Animal):
         playsound(mp3_file_cat)
         print(f"The cat {self.name} meows.")
 
+
 # Create instances of Dog and Cat
 dog = Dog('Fido')
-#cat = Cat('Whiskers')
+cat = Cat('Whiskers')
 
-# Make the sounds of the animals
-dog.make_sound()
-#cat.make_sound()
+# Take user input
+animal_type = input("Enter 'dog' or 'cat': ")
 
+# Check the user input and make the corresponding sound
+if animal_type.lower() == 'dog':
+    dog.make_sound()
+elif animal_type.lower() == 'cat':
+    cat.make_sound()
+else:
+    print("Invalid input. Please enter 'dog' or 'cat'.")
